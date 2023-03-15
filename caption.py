@@ -3,17 +3,17 @@ from PIL import Image, ImageFont, ImageDraw
 
 
 def time2sec(t):
-    arr = t.split(' --> ')
+    arr = t.split('-> ')
     s1 = arr[0].split(',')
     s2 = arr[1].split(',')
-    start = int(s1[0].split(':')[0]) * 3600 + int(s1[0].split(':')[1]) * 60 + int(s1[0].split(':')[2]) + float(
+    start = int(s1[0].split('：')[0]) * 3600 + int(s1[0].split('：')[1]) * 60 + int(s1[0].split('：')[2]) + float(
         s1[1]) * 0.001
-    end = int(s2[0].split(':')[0]) * 3600 + int(s2[0].split(':')[1]) * 60 + int(s2[0].split(':')[2]) + float(
+    end = int(s2[0].split('：')[0]) * 3600 + int(s2[0].split('：')[1]) * 60 + int(s2[0].split('：')[2]) + float(
         s2[1]) * 0.001
     return [start, end]
 
 
-with open('./c.srt', 'r') as f:
+with open('./ca.srt', 'r') as f:
     srt = f.read()
 srt_list = srt.split('\n')
 sec_index = 1
@@ -63,6 +63,6 @@ for i in range(len(text_list)):
     text_in_video(sec_list[i], 'srt.png')
 
 output = concatenate_videoclips(output_list)
-output.write_videofile("output.mp4", temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264",
+output.write_videofile("./output/output.mp4", temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264",
                        audio_codec="aac")
 print('ok')
