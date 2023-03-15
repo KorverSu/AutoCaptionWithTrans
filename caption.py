@@ -47,7 +47,7 @@ def text_clip(text, name):
     img = img_empty.copy()
     draw = ImageDraw.Draw(img)
     text_width = 21 * len(text)
-    draw.text(((480 - text_width) / 2, 10), text, fill=(255, 255, 255), font=font, stroke_width=2, stroke_fill='black')
+    draw.text(((480 - text_width) / 2, 200), text, fill=(255, 255, 255), font=font, stroke_width=2, stroke_fill='black')
     img.save(name)
 
 
