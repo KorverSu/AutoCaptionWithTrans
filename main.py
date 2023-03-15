@@ -1,16 +1,13 @@
-'''import os
-result = os.system('whisper /home/korver/Downloads/c.mp4 --language Japanese' )
-print(result)'''
+import os
 from googletrans import Translator
-
+result = os.system('whisper ~/Downloads/c.mp4 --language Japanese --task translate' )
 translator = Translator()
-source_file = open('c.txt', 'r')
-source_contents = source_file.read()
-result = translator.translate(source_contents, src='ja', dest='zh-CN')
-print(result.text)
-target_file = open('ca.txt', 'w')
-target_file.write(result.text)
-
-# print('ch:', translator.translate('我覺得今天天氣不好', dest='zh-tw').text)
+try:
+    with open('./c.txt', 'r') as sf, open('./ca.txt', 'w') as tf:
+        source_contents = sf.read()
+        target_contents = translator.translate(source_contents, src='en', dest='zh-CN')
+        tf.write(target_contents.text)
+except Exception as e:
+    print("翻譯過程中出現了問題:", e)
 
 
