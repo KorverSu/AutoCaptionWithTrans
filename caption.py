@@ -13,7 +13,7 @@ def time2sec(t):
     return [start, end]
 
 
-with open('./ca.srt', 'r') as f:
+with open('./srt_file/ca.srt', 'r') as f:
     srt = f.read()
 srt_list = srt.split('\n')
 sec_index = 1
